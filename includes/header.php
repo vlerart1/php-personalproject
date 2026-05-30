@@ -5,9 +5,10 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/language.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $_SESSION['lang']; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,15 +37,20 @@ require_once __DIR__ . '/functions.php';
             
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
+                    <li><a href="index.php"><?php echo t('nav_home'); ?></a></li>
+                    <li><a href="hotels.php"><?php echo t('nav_hotels'); ?></a></li>
                     <?php if (is_logged_in()): ?>
-                        <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
-                        <li><a href="auth/logout.php" class="btn btn-outline">Logout</a></li>
+                        <li><a href="profile.php"><i class="fas fa-user-circle"></i> <?php echo t('nav_profile'); ?></a></li>
+                        <li><a href="auth/logout.php" class="btn btn-outline"><?php echo t('nav_logout'); ?></a></li>
                     <?php else: ?>
-                        <li><a href="auth/login.php">Login</a></li>
-                        <li><a href="auth/register.php" class="btn">Register</a></li>
+                        <li><a href="auth/login.php"><?php echo t('nav_login'); ?></a></li>
+                        <li><a href="auth/register.php" class="btn"><?php echo t('nav_register'); ?></a></li>
                     <?php endif; ?>
+                    <li class="lang-switcher">
+                        <a href="?lang=en" class="<?php echo $_SESSION['lang'] === 'en' ? 'active' : ''; ?>">EN</a>
+                        <span>|</span>
+                        <a href="?lang=sq" class="<?php echo $_SESSION['lang'] === 'sq' ? 'active' : ''; ?>">SQ</a>
+                    </li>
                 </ul>
             </nav>
         </div>

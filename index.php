@@ -39,9 +39,8 @@ $destinations = [
 
     <div class="container fade-in text-center" style="z-index: 1;">
         <h1 style="font-size: 4rem; font-weight: 700; margin-bottom: 24px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-            Find Your Perfect Stay</h1>
-        <p style="font-size: 1.2rem; color: var(--gray-light); margin-bottom: 48px; font-weight: 300;">Discover luxury
-            hotels, boutique resorts, and premium accommodations worldwide.</p>
+            <?php echo t('hero_title'); ?></h1>
+        <p style="font-size: 1.2rem; color: var(--gray-light); margin-bottom: 48px; font-weight: 300;"><?php echo t('hero_subtitle'); ?></p>
 
         <div class="search-widget glass-card" style="max-width: 1000px; margin: 0 auto; padding: 16px;">
             <form action="hotels.php" method="GET"
@@ -49,7 +48,7 @@ $destinations = [
                 <div style="flex: 1; min-width: 200px; position: relative;">
                     <i class="fas fa-search"
                         style="position: absolute; left: 16px; top: 16px; color: var(--gray-muted);"></i>
-                    <input type="text" name="destination" class="form-control" placeholder="Where to?"
+                    <input type="text" name="destination" class="form-control" placeholder="<?php echo t('search_destination'); ?>"
                         style="padding-left: 48px; border: none; background: rgba(255,255,255,0.05);">
                 </div>
                 <div style="flex: 1; min-width: 150px;">
@@ -71,7 +70,7 @@ $destinations = [
                         <option value="4" style="color: black;">4+ Guests</option>
                     </select>
                 </div>
-                <button type="submit" class="btn" style="padding: 16px 32px; height: 50px;">Search</button>
+                <button type="submit" class="btn" style="padding: 16px 32px; height: 50px;"><?php echo t('search_button'); ?></button>
             </form>
         </div>
     </div>
@@ -80,7 +79,7 @@ $destinations = [
 <!-- Popular Destinations -->
 <section class="destinations fade-in" style="padding: 80px 0;">
     <div class="container">
-        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 48px;">Popular Destinations</h2>
+        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 48px;"><?php echo t('popular_destinations'); ?></h2>
 
         <div class="destinations-grid">
             <?php foreach ($destinations as $dest): ?>
@@ -102,10 +101,10 @@ $destinations = [
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
             <div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 8px;">Featured Stays</h2>
-                <p style="color: var(--gray-muted);">Handpicked luxury properties for your next getaway.</p>
+                <h2 style="font-size: 2.5rem; margin-bottom: 8px;"><?php echo t('featured_hotels'); ?></h2>
+                <p style="color: var(--gray-muted);"><?php echo t('featured_subtitle'); ?></p>
             </div>
-            <a href="hotels.php" class="btn btn-outline">View All</a>
+            <a href="hotels.php" class="btn btn-outline"><?php echo t('view_all'); ?></a>
         </div>
 
         <div class="hotel-grid"
@@ -145,11 +144,11 @@ $destinations = [
                         <div
                             style="display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--glass-border); padding-top: 16px;">
                             <div>
-                                <span style="font-size: 0.85rem; color: var(--gray-muted);">Starting from</span>
+                                <span style="font-size: 0.85rem; color: var(--gray-muted);"><?php echo t('starting_from'); ?></span>
                                 <div style="font-size: 1.25rem; font-weight: 700; color: var(--gold);">
                                     <?php echo format_price($hotel['min_price'] ?? 0); ?></div>
                             </div>
-                            <a href="hotel-details.php?id=<?php echo $hotel['id']; ?>" class="btn">View Details</a>
+                            <a href="hotel-details.php?id=<?php echo $hotel['id']; ?>" class="btn"><?php echo t('view_details'); ?></a>
                         </div>
                     </div>
                 </div>
